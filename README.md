@@ -1,1 +1,1 @@
-# items-catalogue-server
+# item-catalogue-server
