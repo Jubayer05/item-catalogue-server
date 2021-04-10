@@ -4,7 +4,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import router from './routes/itemsRouter.js';
+import itemsRoute from './routes/itemsRouter.js';
+import userRoutes from './routes/userRouter.js';
 
 const app = express();
 dotenv.config();
@@ -18,7 +19,8 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
-app.use('/items', router);
+app.use('/items', itemsRoute);
+app.use('/users', userRoutes);
 
 const CONNECTION_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.PASSWORD}@cluster0.5wv0c.mongodb.net/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
 const PORT = process.env.PORT || 5000;
